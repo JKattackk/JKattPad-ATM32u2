@@ -48,6 +48,7 @@
         "silk_text_thickness": 0.1,
         "silk_text_upright": false,
         "zones": {
+          "45_degree_only": false,
           "min_clearance": 0.5
         }
       },
@@ -58,72 +59,7 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [
-        [
-          "lib_footprint_mismatch|156180000|226650000|3a484e33-9324-48d8-b090-5260926696b5|00000000-0000-0000-0000-000000000000",
-          "Added rear silkscreen for connecting pins"
-        ],
-        [
-          "solder_mask_bridge|153930000|126722500|cf210d08-3d98-448a-aacc-5032786d40e2|01959b87-034b-4c0a-a0ed-f0742e36259d",
-          ""
-        ],
-        [
-          "solder_mask_bridge|153930000|128072500|704ab7ac-31e7-45c8-bae0-1d79403c55bd|3c0ffc20-b99d-4fdf-be71-6b27838d9007",
-          ""
-        ],
-        [
-          "solder_mask_bridge|154780000|126722500|cf574b76-241a-42fa-a2df-9f6612cbb009|cf210d08-3d98-448a-aacc-5032786d40e2",
-          ""
-        ],
-        [
-          "solder_mask_bridge|154780000|128072500|3c0ffc20-b99d-4fdf-be71-6b27838d9007|be583e61-cedf-461c-8986-c081f5a2fda5",
-          ""
-        ],
-        [
-          "solder_mask_bridge|155630000|126722500|8fab96c6-70c3-4069-b437-030b569e262a|cf574b76-241a-42fa-a2df-9f6612cbb009",
-          ""
-        ],
-        [
-          "solder_mask_bridge|155630000|128072500|be583e61-cedf-461c-8986-c081f5a2fda5|cc5094c2-3f32-4665-9fd8-f4c85535c53b",
-          ""
-        ],
-        [
-          "solder_mask_bridge|156480000|126722500|923b8600-10f0-4d7f-a5c6-2bd3f0e434ae|8fab96c6-70c3-4069-b437-030b569e262a",
-          ""
-        ],
-        [
-          "solder_mask_bridge|156480000|128072500|cc5094c2-3f32-4665-9fd8-f4c85535c53b|0bd769c0-4cf8-4731-a00d-b18044ebe947",
-          ""
-        ],
-        [
-          "solder_mask_bridge|157330000|126722500|b991a402-249c-431a-8d9f-f9f3abad4792|923b8600-10f0-4d7f-a5c6-2bd3f0e434ae",
-          ""
-        ],
-        [
-          "solder_mask_bridge|157330000|128072500|0bd769c0-4cf8-4731-a00d-b18044ebe947|70ff7322-f352-40eb-bdcf-05ff086d8cf0",
-          ""
-        ],
-        [
-          "solder_mask_bridge|158180000|126722500|e6d5abe1-19de-4824-8e7f-a48b6f7d6c46|b991a402-249c-431a-8d9f-f9f3abad4792",
-          ""
-        ],
-        [
-          "solder_mask_bridge|158180000|128072500|70ff7322-f352-40eb-bdcf-05ff086d8cf0|1f2f99d8-ed38-4884-8920-c8b3d9223403",
-          ""
-        ],
-        [
-          "solder_mask_bridge|159030000|126722500|87a85f7b-6bc3-4e5e-8f38-21018a3dd031|e6d5abe1-19de-4824-8e7f-a48b6f7d6c46",
-          ""
-        ],
-        [
-          "solder_mask_bridge|159030000|128072500|1f2f99d8-ed38-4884-8920-c8b3d9223403|59744f49-7a84-44b7-b90e-292839a925e4",
-          ""
-        ],
-        [
-          "starved_thermal|156805000|208750000|e8114695-5da8-41fe-9fea-8c252885daae|0dcb06e7-44b9-4970-a252-7f7f9914468a|B.Cu",
-          ""
-        ]
-      ],
+      "drc_exclusions": [],
       "meta": {
         "version": 2
       },
@@ -145,7 +81,8 @@
         "footprint_symbol_mismatch": "warning",
         "footprint_type_mismatch": "ignore",
         "hole_clearance": "error",
-        "hole_to_hole": "warning",
+        "hole_near_hole": "error",
+        "hole_to_hole": "error",
         "holes_co_located": "warning",
         "invalid_outline": "error",
         "isolated_copper": "warning",
@@ -184,9 +121,12 @@
         "unconnected_items": "error",
         "unresolved_variable": "error",
         "via_dangling": "warning",
+        "zone_has_empty_net": "error",
         "zones_intersect": "error"
       },
       "rules": {
+        "allow_blind_buried_vias": false,
+        "allow_microvias": false,
         "max_error": 0.005,
         "min_clearance": 0.2,
         "min_connection": 0.0,
@@ -289,7 +229,8 @@
           "drill": 0.0
         }
       ],
-      "zones_allow_external_fillets": false
+      "zones_allow_external_fillets": false,
+      "zones_use_no_outline": true
     },
     "ipc2581": {
       "dist": "",
@@ -491,11 +432,21 @@
       "different_unit_net": "error",
       "duplicate_reference": "error",
       "duplicate_sheet_names": "error",
+      "endpoint_off_grid": "warning",
       "extra_units": "error",
+      "footprint_filter": "ignore",
+      "footprint_link_issues": "warning",
+      "four_way_junction": "ignore",
       "global_label_dangling": "warning",
       "hier_label_mismatch": "error",
       "label_dangling": "error",
+      "label_multiple_wires": "warning",
       "lib_symbol_issues": "warning",
+      "lib_symbol_mismatch": "warning",
+      "missing_bidi_pin": "warning",
+      "missing_input_pin": "warning",
+      "missing_power_pin": "error",
+      "missing_unit": "warning",
       "multiple_net_names": "warning",
       "net_not_bus_member": "warning",
       "no_connect_connected": "warning",
@@ -504,8 +455,14 @@
       "pin_not_driven": "error",
       "pin_to_pin": "warning",
       "power_pin_not_driven": "error",
+      "same_local_global_label": "warning",
+      "similar_label_and_power": "warning",
       "similar_labels": "warning",
+      "similar_power": "warning",
+      "simulation_model_issue": "ignore",
+      "single_global_label": "ignore",
       "unannotated": "error",
+      "unconnected_wire_endpoint": "warning",
       "unit_value_mismatch": "error",
       "unresolved_variable": "error",
       "wire_dangling": "error"
